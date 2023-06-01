@@ -24,6 +24,17 @@ export const findNewAPI = () => {
 }
 
 /**
+ * @description: 获取人气推荐
+ * @param {*}
+ * @return {*}
+ */
+export const getHotAPI = () => {
+  return httpInstance({
+    url: '/home/hot'
+  })
+}
+
+/**
  * @description: 获取所有商品模块
  * @param {*}
  * @return {*}
