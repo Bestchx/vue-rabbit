@@ -23,7 +23,7 @@ onMounted(() => {
       </h1>
       <ul class="app-header-nav">
         <li class="home" v-for="item in categoryList" :key="item.id">
-          <RouterLink to="/" />{{ item.name }}</RouterLink>
+          <RouterLink to="/"> {{ item.name }} </RouterLink> 
         </li>
       </ul>
       <div class="search">
