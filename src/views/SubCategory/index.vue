@@ -6,7 +6,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute()
 const categoryData = ref({})
 const getCategoryDate = async () => {
-  const res = getCategoryFilterAPI(route.params.id)
+  const res = await getCategoryFilterAPI(route.params.id)
   categoryData.value = res.result
 }
 onMounted(() => getCategoryDate())
