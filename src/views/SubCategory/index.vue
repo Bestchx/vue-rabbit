@@ -1,8 +1,8 @@
 <script setup>
-import { getCategoryFilterAPI, getSubCategoryAPI  } from '@/apis/category';
-import { onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import GoodsItem from '../Home/components/GoodsItem.vue';
+import { getCategoryFilterAPI, getSubCategoryAPI  } from '@/apis/category'
+import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import GoodsItem from '../Home/components/GoodsItem.vue'
 // 获取面包屑导航数据
 const route = useRoute()
 const categoryData = ref({})
