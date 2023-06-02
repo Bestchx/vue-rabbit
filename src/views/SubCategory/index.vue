@@ -6,11 +6,11 @@ import GoodsItem from '../Home/components/GoodsItem.vue';
 // 获取面包屑导航数据
 const route = useRoute()
 const categoryData = ref({})
-const getCategoryDate = async () => {
+const getCategoryData = async () => {
   const res = await getCategoryFilterAPI(route.params.id)
   categoryData.value = res.result
 }
-onMounted(() => getCategoryDate())
+onMounted(() => getCategoryData())
 
 // 获取基础列表数据渲染
 const goodList = ref([])
@@ -20,18 +20,18 @@ const reqData = ref({
   pageSize: 20,
   sortFiled: 'publishTime'
 })
-const getGoodLIst = () => {
-  getSubCategoryAPI(repData.value)
+const getGoodList = () => {
+  const res = getSubCategoryAPI(reqData.value)
   console.log(res)
   goodList.value = res.result.items
 }
-onMounted(() => getGoodLIst())
+onMounted(() => getGoodList())
 
 // tab切换回调
 const tabChange = () => {
   console.log('tab切换了', reqData.value.sortFiled)
   reqData.value.page = 1
-  getGoodLIst()
+  getGoodList()
 }
 
 // 加载更多
@@ -43,7 +43,7 @@ const load = async () => {
   const res = await getSubCategoryAPI(reqData.value)
   goodList.value = [...goodList.value,...res.result.items]
   // 加载完毕 停止监听
-  if (res.result.items.length == 0) {
+  if (res.result.items.length === 0) {
     disable.value = true
   }
 }
@@ -62,7 +62,7 @@ const load = async () => {
       </el-breadcrumb>
     </div>
     <div class="sub-container">
-      <el-tabs v-model="repData.sortFiled" @tab-change="tabChange">
+      <el-tabs v-model="reqData.sortFiled" @tab-change="tabChange">
         <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
         <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
         <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
